@@ -1,0 +1,7 @@
+.adList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 900px;
+  margin: auto;
+}
+  

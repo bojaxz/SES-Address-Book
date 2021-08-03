@@ -1,0 +1,17 @@
+.adCardHeader {
+    position: relative;
+    margin-bottom: 10px;
+    /*to align the reference correctly*/
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .adCardHeader__editButton {
+    border-radius: 0 5px 0 0;
+  }
+  
+  .adCardHeader__deleteButton {
+    border-radius: 5px 0 0 0;
+    color: red;
+  }
+  

@@ -1,0 +1,25 @@
+img {
+  height: 125px
+}
+
+.content {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.adCard {
+    background-color: white;
+    border: 2px black double;
+    border-radius: 5px;
+    margin: 1em;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .adCard hr {
+    width: 80%;
+    margin: 0 auto 10px auto;
+    border-top: 1px solid rgb(221, 221, 221);
+  }
+  
