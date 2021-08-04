@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './navbar.css';
 import sesLogo from '../../img/ses_logo_header.png';
 
@@ -9,12 +9,14 @@ export const Navbar = () => {
             <nav>
                 <ul className="navbar">
                     <li>
-                    <Link to="/">
+                    <NavLink to="/" >
                         <img src={sesLogo} alt="SES Logo" className="navbarLogo" />
-                    </Link>
+                    </NavLink>
                     </li>
                     <li>
-                    <Link to="/Users" className="navLink">Users</Link>
+                    <NavLink to="/Users" className="navLink" activeClassName="active">
+                        Users
+                    </NavLink>
                     </li>
                 </ul>
             </nav>

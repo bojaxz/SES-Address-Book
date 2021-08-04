@@ -3,5 +3,11 @@
   grid-template-columns: 1fr 1fr;
   max-width: 900px;
   margin: auto;
+  padding: 20px 0 40px;
 }
   
+@media (max-width: 800px) {
+  .adList{
+    grid-template-columns: 1fr;
+  }
+}

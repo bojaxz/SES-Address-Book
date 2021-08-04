@@ -7,6 +7,9 @@ import { IconContext } from 'react-icons/lib';
 import PersonalLogo from '../../img/Personal_Logo_Darkv3.svg';
 
 export const Footer = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+
     return (
         <div className="footer">
             <img src={PersonalLogo} alt="Liam Morrison Personal Logo"/>
@@ -35,7 +38,7 @@ export const Footer = () => {
                     </a>
                 </div>
             </IconContext.Provider>
-            <p>CopyRight 2021</p>
+            <p>Copyright&copy; {year}</p>
         </div>
     )
 }

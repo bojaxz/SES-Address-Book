@@ -96,7 +96,20 @@ function App() {
         age: +age,
         id: currentUser.id,
       };
-      editUser(newUser);
+      if (firstName === "") {
+        alert("You must enter a first name.");
+        return;
+      }
+      if (age === ""){
+        alert("You must enter an age.");
+        return;
+      } 
+      if (gender === "") {
+        alert("You must enter a gender.");
+        return;
+      } else {
+        editUser(newUser);
+      }
     } else {
       const newUser = {
         firstName,
@@ -105,8 +118,21 @@ function App() {
         age: +age,
         id: uuidv4(),
       };
-      addUser(newUser);
-      alert(`Added ${newUser.firstName} ${newUser.lastName} to Users!`)
+      if (firstName === "") {
+        alert("You must enter a first name.");
+        return;
+      }
+      if (age === ""){
+        alert("You must enter an age.");
+        return;
+      } 
+      if (gender === "") {
+        alert("You must enter a gender.");
+        return;
+      } else {
+        addUser(newUser);
+        alert(`Added ${newUser.firstName} ${newUser.lastName} to Users!`)
+      }
     }
     clearInput();
   };

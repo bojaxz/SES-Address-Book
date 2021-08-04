@@ -6,7 +6,7 @@ const AdFilter = ({ query, handleQueryChange }) => {
   return (
       <div className="adFilter">
         <div className="inputGroup">
-          <label htmlFor="genderFilter" className="genderInput">Gender Filter</label>
+          <label htmlFor="genderFilter" className="genderInput">Gender Filter:</label>
           <select
             name="genderFilter"
             value={query}
