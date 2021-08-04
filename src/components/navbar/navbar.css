@@ -1,5 +1,29 @@
 .navbar {
     display: flex;
-    justify-content: space-around;
-    max-width: 200px;
+    justify-content: start;
+    width: 100vw;
+    background-color: #0B090A;
+}
+
+.navbarLogo {
+    height: 40px;
+    padding: 5px 30px 5px 10px;
+}
+
+.navLink {
+    color: #D3D3D3;
+    font-size: 1.65rem;
+    font-weight: bold;
+}
+
+.navLink:hover {
+    color: #eb193c;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
 }

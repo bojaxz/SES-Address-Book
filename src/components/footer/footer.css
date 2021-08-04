@@ -1,11 +1,13 @@
 .footer {
-    background-color: gray;
+    background-color: #0B090A;
     width: 100%;
-    min-height: 100px;
+    height: 17vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    color: #D3D3D3;
+    padding-bottom: 20px;
 }
 
 .icons {
@@ -13,10 +15,12 @@
     flex-direction: row;
     justify-content: space-between;
     min-width: 150px;
+    color: #D3D3D3;
+    padding-bottom: 10px;
 }
 
 .icons a:visited {
-    color: black;
+    color: #D3D3D3;
 }
 
 .icons a:hover {

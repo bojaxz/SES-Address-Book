@@ -9,7 +9,7 @@ import PersonalLogo from '../../img/Personal_Logo_Darkv3.svg';
 export const Footer = () => {
     return (
         <div className="footer">
-            <img src={PersonalLogo} />
+            <img src={PersonalLogo} alt="Liam Morrison Personal Logo"/>
             <IconContext.Provider value={{ size: "2rem" }}  >
                 <div className="icons">
                     <a 
@@ -27,7 +27,7 @@ export const Footer = () => {
                         <FaLinkedin />
                     </a>
                     <a 
-                        href="https://twitter.com/erroratu/status/1420237554604027906?s=21"
+                        href="https://twitter.com/"
                         target="_blank"
                         rel='noreferrer'
                     >

@@ -14,7 +14,7 @@ const AdEntry = ({
   clearInput,
   handleAddOrEditClick,
 }) => {
-  const buttonContent = isEdit ? 'Change' : 'Add';
+  const buttonContent = isEdit ? 'Edit' : 'Add';
   return (
     <div>
       <div className="inputGroup">

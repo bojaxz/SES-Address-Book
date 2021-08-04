@@ -1,10 +1,14 @@
 .adFilter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    background-color: rgb(55, 59, 93);
-    padding: 20px 0 10px 0;
-    margin-top: 10px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #a4161a;
+  padding: 20px 0 20px 0;
+}
+
+.genderInput {
+  font-size: 1.65rem;
+  font-weight: 500;
+  color: #f5f3f4;
+}
