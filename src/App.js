@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import firebase from './firebase';
 import { v4 as uuidv4 } from "uuid";
-import './App.css';
+import './app.css';
 import Navbar from './components/navbar/Navbar';
 import AdFilter from './components/address-book-list/AdFilter';
 import AdForm from './components/address-book-entry/AdForm';
@@ -31,29 +31,40 @@ function App() {
 
   const ref = firebase.firestore().collection("users");
 
+  // read our users from Firebase(FB) Db.
   function getUsers() {
+    // add a loading screen while fetching users
     setLoading(true);
+    // use FB method to get a snapshot of our users data.
+    // snapshots will refresh in real-time when a change is made client or server side
     ref.onSnapshot((querySnapshot) => {
       const items = [];
+      // map through items to create index item for each user
       querySnapshot.forEach((doc) => {
         items.push(doc.data());
       });
       setUsers(items);
+      // remove loading screen once fetch is completed
       setLoading(false);
     })
   }
 
+  // functional components don't use life cycles, 
+  // so we add a useEffect to get users once app mounts
   useEffect(() => {
     getUsers();
     // eslint-disable-next-line
   }, []);
 
+  // same as previous useEffect, but to grab stats component info
   useEffect(() => {
     getOldest();
     getYoungest();
     getAverage();
   });
 
+  // callback to handle gender filter and Add/Edit button.
+  // passed to filter and form as props
   const handleQueryChange = (e) => {
     if (e.target.value) {
       setIsFiltered(true);
@@ -62,6 +73,7 @@ function App() {
     setQuery(e.target.value);
   };
 
+  // resets our form fields once a user is added or editted
   const clearInput = () => {
     setIsEdit(false);
     setFirstName('');
@@ -71,6 +83,7 @@ function App() {
     setCurrentUser({});
   };
 
+  // populate user data when clicking edit button
   const handleEditClick = (e) => {
     const item = users.filter((user) => user.id === e.target.value);
     setIsEdit(true);
@@ -81,13 +94,17 @@ function App() {
     setGender(item[0].gender);
   };
 
+  // grabs the id of the user that is clicked to delete via an event, 
+  // deletes document that matches id
   const handleDeleteClick = (e) => {
     const item = users.filter((user) => user.id === e.target.value);
     deleteUser(item[0]);
     alert(`Successfully deleted ${item[0].firstName} ${item[0].lastName}!`)
   };
 
+  // used to add logic to our form submission for either add or edit
   const handleAddOrEditClick = () => {
+    // when isEdit is true, we reuse the current user's id
     if (isEdit) {
       const newUser = {
         firstName,
@@ -111,6 +128,7 @@ function App() {
         editUser(newUser);
       }
     } else {
+      // when isEdit is false, we generate a new user id with uuid
       const newUser = {
         firstName,
         lastName,
@@ -137,7 +155,7 @@ function App() {
     clearInput();
   };
 
-  // Add User Function
+  // FB Add User Function
   function addUser(newUser) {
     ref
       // create a new document in our FSDB using .doc() method
@@ -148,10 +166,11 @@ function App() {
       });
   }
 
-  // Edit User Function
+  // FB Edit User Function
   function editUser(updatedUser) {
     setLoading();
     ref
+      // using the update method rather than set
       .doc(updatedUser.id)
       .update(updatedUser)
       .catch((err) => {
@@ -159,7 +178,7 @@ function App() {
       });
   }
 
-  // Delete User Function
+  // FB Delete User Function
   function deleteUser(user) {
     ref
       // similar to addUser, we delete a user from our FSDB using the .doc() method
@@ -170,6 +189,8 @@ function App() {
       });
   }
 
+  // logic for stats component
+  // add all user ages to an array and uses Math.max to return highest age
   function getOldest() {
     const usersAge = [];
     for (let i = 0; i < users.length; i++) {
@@ -179,6 +200,7 @@ function App() {
     setOldest(maxAge);
   }
 
+  // uses a for loop to get sum of age, divide by number of ages, then round average
   function getAverage() {
     let totalAge = 0;
     for (let i = 0; i < users.length; i++) {
@@ -188,6 +210,7 @@ function App() {
     setAverageAge(average);
   }
 
+  // similar to getOldest, but using Math.min to find lowest
   function getYoungest() {
     const usersAge = [];
     for (let i = 0; i < users.length; i++) {
@@ -197,6 +220,7 @@ function App() {
     setYoungest(minAge);
   }
 
+  // useEffect to update list of users whenever components mount/refresh
   useEffect(() => {
     if (query) {
       const filteredUsers = users.filter(
@@ -207,14 +231,14 @@ function App() {
   }, [users, query]);
 
 
-
+  // loading page is displayed while fetching users
   if (loading) {
     return <h1 className="loading">Loading...</h1>
   }
 
   return (
     <Router>
-      <div className="App">
+      <div className="app">
         <Navbar />
         <Switch>
           <Route exact path="/">

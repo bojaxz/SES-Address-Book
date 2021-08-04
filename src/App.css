@@ -4,13 +4,20 @@
   box-sizing: border-box;
 }
 
+html,body
+{
+    width: 100%;
+    overflow-x: hidden; 
+}
+
 body {
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   overflow-y: scroll;
 }
 
 .app {
-  background-color: #f6f6f6;
+  height: 100vh;
+  background-color: #0B090A;
 }
 
 .usersPage {
